@@ -1,12 +1,19 @@
 <%= form_for @contact_importer_file, url: root_path do |f| %>
-  <h3>Tasks</h3>
-  <div id="tasks">
-    <%= f.fields_for :row_importers do |r| %>
-      <%= render 'row_importer_fields', f: r %>
-    <% end %>
-    <div class="links">
-      <%= link_to_add_association 'add ROW', f, :row_importers %>
-    </div>
+  <h3>Contact Importer File</h3>
+  <div id="row_importers">
+    <table class="table table-hover table-bordered">
+      <tbody>
+      <%= f.fields_for :row_importers do |r| %>
+        <tr>
+          <td><%= r.index + 1 %></td>
+          <td><%= render 'row_importer_fields', f: r %></td>
+        </tr>
+      <% end %>
+<!--      <div class="links">-->
+         <%#= link_to_add_association 'add ROW', f, :row_importers %>
+<!--      </div>-->
+      </tbody>
+    </table>
   </div>
   <%= f.submit %>
 <% end %>

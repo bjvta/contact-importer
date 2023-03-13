@@ -1,13 +1,9 @@
-<div class="nested-fields">
-    <div class="field">
-        <%= f.label :attr_type %>
-        <br/>
-        <%= f.text_field :attr_type %>
-    </div>
-  <div class="field">
-        <%= f.label :val %>
-        <br/>
-        <%= f.text_field :val %>
-    </div>
-  <%= link_to_remove_association "remove row_importer", f %>
-</div>
+<tr class="nested-fields">
+  <td>
+    <%= f.select :attr_type, attribute_type_selector, :prompt => 'Select One' %>
+  </td>
+  <td>
+    <%= f.text_field :val %>
+  </td>
+</tr>
+  <%#= link_to_remove_association "remove row attribute", f %>

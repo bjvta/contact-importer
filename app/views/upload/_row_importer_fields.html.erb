@@ -1,10 +1,20 @@
-<div class="nested-fields">
-    <%= f.fields_for :row_attributes do |r| %>
-        <%= render 'row_attribute_fields', f: r %>
-    <% end %>
-    <div class="links">
-        <%= link_to_add_association 'add attribute', f, :row_attributes %>
-    </div>
+<div class="nested-fields" style="padding: 10px">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Attribute</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :row_attributes do |r| %>
+              <%= render 'row_attribute_fields', f: r %>
+        <% end %>
+    <%# <div class="links"> %>
+        <%#= link_to_add_association 'add attribute', f, :row_attributes %>
+    <%# </div> %>
+      </tbody>
+    </table>
 
-  <%= link_to_remove_association "remove row_importer", f %>
+  <%#= link_to_remove_association "remove row_importer", f %>
 </div>

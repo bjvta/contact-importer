@@ -27,7 +27,6 @@ class UploadController < ApplicationController
     @contact_importer_file.row_importers.append(row_importer)
     row_importer = RowImporter.new
     @contact_importer_file.row_importers.append(row_importer)
-    debugger
   end
 
   def import
