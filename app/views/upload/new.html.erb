@@ -1,0 +1,12 @@
+<%= form_for @contact_importer_file, url: root_path do |f| %>
+  <h3>Tasks</h3>
+  <div id="tasks">
+    <%= f.fields_for :row_importers do |r| %>
+      <%= render 'row_importer_fields', f: r %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add ROW', f, :row_importers %>
+    </div>
+  </div>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  attr_type: MyString
+  val: MyString
+  row_importer: one
+
+two:
+  attr_type: MyString
+  val: MyString
+  row_importer: two

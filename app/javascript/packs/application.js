@@ -12,6 +12,8 @@ import { Tooltip, Popover } from "bootstrap"
 
 require("@popperjs/core")
 require("../stylesheets/application.scss")
+require("jquery")
+require("@nathanvda/cocoon")
 
 
 document.addEventListener("turbolinks:load", () => {

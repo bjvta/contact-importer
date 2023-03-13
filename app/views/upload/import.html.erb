@@ -1,0 +1,16 @@
+<h1>Upload#import</h1>
+<p>Find me in app/views/upload/import.html.erb</p>
+
+<%= form_tag({:action => :import}, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag( "Import" ) %>
+<% end %>
+
+
+<% @rowarraydisp.each do |row| %>
+  <%= row %>
+<% end %>
+
+<script>
+    console.log("Hello world");
+</script>
