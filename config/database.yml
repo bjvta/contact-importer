@@ -1,0 +1,19 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: contact_importer_development
+
+test:
+  <<: *default
+  database: contact_importer_test
+
+production:
+  <<: *default
+  database: contact_importer_production
+  username: contact_importer
+  password: <%= ENV['CONTACT_IMPORTER_DATABASE_PASSWORD'] %>
