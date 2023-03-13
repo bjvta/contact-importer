@@ -32,10 +32,12 @@ class UploadController < ApplicationController
   def import
     myfile = params[:file]
     @rowarraydisp = []
-
     return unless params[:file].present?
+    @contact_importer_file = CsvBuilderService.call(myfile.path)
+  end
 
-    @rowarraydisp = CSV.read(myfile.path)
+  def save
+    
   end
 
   # def upload_params

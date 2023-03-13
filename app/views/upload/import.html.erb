@@ -1,15 +1,37 @@
-<h1>Upload#import</h1>
-<p>Find me in app/views/upload/import.html.erb</p>
+<h1>Import File</h1>
+<p>Please select a CSV file like the example, then click on Import button, then you will see the whole data, please select the type of each value.
+<br/>
+For example, if you see Pedro Martinez in the value, it could be the Name, so select the name.
+<br/>
+<br/>
+Note. each row is indexed, you will see in the left side and the attribute type cannot be repeated, if it is so, it won't be saved.
+</p>
 
-<%= form_tag({:action => :import}, multipart: true) do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag( "Import" ) %>
+<% if params[:file].present? %>
+  <%= form_for @contact_importer_file, url: root_path do |f| %>
+    <h3>Contact Importer File</h3>
+    <div id="row_importers">
+      <table class="table table-hover table-bordered">
+        <tbody>
+        <%= f.fields_for :row_importers do |r| %>
+          <tr>
+            <td><%= r.index + 1 %></td>
+            <td><%= render 'row_importer_fields', f: r %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= f.submit %>
+  <% end %>
+
+<% else %>
+  <%= form_tag({:action => :import}, multipart: true) do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag( "Import" ) %>
+  <% end %>
 <% end %>
 
-
-<% @rowarraydisp.each do |row| %>
-  <%= row %>
-<% end %>
 
 <script>
     console.log("Hello world");
