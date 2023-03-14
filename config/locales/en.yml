@@ -31,3 +31,5 @@
 
 en:
   hello: "Hello world"
+  errors: 
+    name_invalid_format: Name has an invalid format
