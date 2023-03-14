@@ -33,3 +33,5 @@ en:
   hello: "Hello world"
   errors: 
     name_invalid_format: Name has an invalid format
+    birthday_invalid_format: Birthday has an invalid format, format should be YYYYMMDD or YYYY-MM-DD
+    birthday_invalid_date: Birthday has an invalid date

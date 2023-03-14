@@ -33,12 +33,11 @@ class UploadController < ApplicationController
     myfile = params[:file]
     @rowarraydisp = []
     return unless params[:file].present?
+
     @contact_importer_file = CsvBuilderService.call(myfile.path)
   end
 
-  def save
-    
-  end
+  def save; end
 
   # def upload_params
   #   params.require(:contact_importer_file).permit(:file_name, row_importers_attributes: [:id, row_attributes_attributes: [:id, :attr_type, :val, :_destroy], :_destroy])
