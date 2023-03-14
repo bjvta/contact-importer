@@ -35,3 +35,4 @@ en:
     name_invalid_format: Name has an invalid format
     birthday_invalid_format: Birthday has an invalid format, format should be YYYYMMDD or YYYY-MM-DD
     birthday_invalid_date: Birthday has an invalid date
+    phone_invalid_format: Phone has an invalid format, should be (+00) 000 000 00 00 or (+00) 000-000-00-00

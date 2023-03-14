@@ -13,7 +13,7 @@ class BirthdayFormatValidator < ActiveModel::EachValidator
 
     begin
       # This will parse if the date is invalid, example Feb 30
-      d = Date.parse(value)
+      Date.parse(value)
     rescue StandardError
       record.errors.add(attribute, :invalid, message: I18n.t('errors.birthday_invalid_date'))
     end
