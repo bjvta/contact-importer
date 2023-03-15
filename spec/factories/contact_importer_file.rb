@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :contact_importer_file do
     file_name { Faker::Name.name }

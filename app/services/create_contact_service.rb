@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateContactService
   attr_accessor :contact_hash, :logged_user, :contact
 
@@ -7,20 +9,18 @@ class CreateContactService
   end
 
   def call
-    begin
-      build_contact
-      if contact_exists?
-        return "Contact could not be saved. Contact with email #{contact.email} already exists in the contact list."
-      end
-      
-      if contact.save
-        "Contact has been saved. Name: #{contact.name}, Email: #{contact.email}"
-      else
-        "Contact could not be saved. " + contact.errors.full_messages.join('\n')
-      end
-    rescue StandardError => e
-      "Contact could not be save, reason: #{e.message}"
+    build_contact
+    if contact_exists?
+      return "Contact could not be saved. Contact with email #{contact.email} already exists in the contact list."
     end
+
+    if contact.save
+      "Contact has been saved. Name: #{contact.name}, Email: #{contact.email}"
+    else
+      "Contact could not be saved. #{contact.errors.full_messages.join('\n')}"
+    end
+  rescue StandardError => e
+    "Contact could not be save, reason: #{e.message}"
   end
 
   def contact_exists?

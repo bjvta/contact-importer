@@ -9,6 +9,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :username, uniqueness: true
   has_many :contacts
+  has_many :contact_importer_files
 
   attr_writer :login
 

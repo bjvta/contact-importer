@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CreateContactImporterFileService do
@@ -13,8 +15,7 @@ RSpec.describe CreateContactImporterFileService do
     let!(:row_importer_two) { build(:row_importer) }
     let!(:contact_importer_file) { build(:contact_importer_file) }
 
-
-    it 'given a ContactImporterFile with 2 children, save it and save a log' do 
+    it 'given a ContactImporterFile with 2 children, save it and save a log' do
       row_importer.row_attributes.append(row_attribute_name)
       row_importer.row_attributes.append(row_attribute_birthday)
       row_importer.row_attributes.append(row_attribute_phone)
@@ -22,11 +23,10 @@ RSpec.describe CreateContactImporterFileService do
       row_importer.row_attributes.append(row_attribute_credit_card)
       row_importer.row_attributes.append(row_attribute_email)
       contact_importer_file.row_importers.append(row_importer)
-      
-      expect { 
-        result = described_class.call(contact_importer_file)  
-      }.to change { Contact.count }.by(1)
-      
+
+      expect do
+        result = described_class.call(contact_importer_file)
+      end.to change { Contact.count }.by(1)
     end
 
     it 'given a CIF with bad children, no email, save the log' do
@@ -36,11 +36,11 @@ RSpec.describe CreateContactImporterFileService do
       row_importer.row_attributes.append(row_attribute_address)
       row_importer.row_attributes.append(row_attribute_credit_card)
       contact_importer_file.row_importers.append(row_importer)
-      
-      expect { 
-        result = described_class.call(contact_importer_file)  
+
+      expect do
+        result = described_class.call(contact_importer_file)
         expect(result.log).not_to eq('')
-      }.to change { Contact.count }.by(0)
+      end.to change { Contact.count }.by(0)
     end
 
     it 'given a CIF with no credit card, save the log' do
@@ -50,13 +50,12 @@ RSpec.describe CreateContactImporterFileService do
       row_importer.row_attributes.append(row_attribute_address)
       row_importer.row_attributes.append(row_attribute_email)
       contact_importer_file.row_importers.append(row_importer)
-      
-      expect { 
-        result = described_class.call(contact_importer_file)  
-        expect(result.log).not_to eq('')
-      }.to change { Contact.count }.by(0)
-    end
 
+      expect do
+        result = described_class.call(contact_importer_file)
+        expect(result.log).not_to eq('')
+      end.to change { Contact.count }.by(0)
+    end
 
     it 'given good and bad CIF, save the log' do
       row_importer.row_attributes.append(row_attribute_name)
@@ -66,17 +65,17 @@ RSpec.describe CreateContactImporterFileService do
       row_importer.row_attributes.append(row_attribute_credit_card)
       row_importer.row_attributes.append(row_attribute_email)
       contact_importer_file.row_importers.append(row_importer)
-      
+
       row_importer_two.row_attributes.append(row_attribute_name)
       row_importer_two.row_attributes.append(row_attribute_birthday)
       row_importer_two.row_attributes.append(row_attribute_phone)
       row_importer_two.row_attributes.append(row_attribute_address)
       row_importer_two.row_attributes.append(row_attribute_credit_card)
       contact_importer_file.row_importers.append(row_importer_two)
-      expect { 
-        result = described_class.call(contact_importer_file)  
+      expect do
+        result = described_class.call(contact_importer_file)
         expect(result.log).not_to eq('')
-      }.to change { Contact.count }.by(1)
+      end.to change { Contact.count }.by(1)
     end
 
     it 'given an existing email on the contact list' do
@@ -90,10 +89,10 @@ RSpec.describe CreateContactImporterFileService do
       row_importer.row_attributes.append(row_attribute_credit_card)
       row_importer.row_attributes.append(row_attribute_email)
       contact_importer_file.row_importers.append(row_importer)
-      expect { 
-        result = described_class.call(contact_importer_file)  
+      expect do
+        result = described_class.call(contact_importer_file)
         expect(result.log).not_to eq('')
-      }.to change { Contact.count }.by(0)
+      end.to change { Contact.count }.by(0)
     end
   end
 end

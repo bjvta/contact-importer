@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe CreateContactService do
@@ -19,8 +21,7 @@ RSpec.describe CreateContactService do
     end
     context 'invalid data' do
       it 'given nothing, should return a string with errors' do
-        hash_data = {
-        }
+        hash_data = {}
         result = described_class.new(hash_data, logged_user).call
         expect(result).not_to eq('Contact has been saved.')
       end

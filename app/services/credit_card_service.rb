@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class CreditCardService
   attr_accessor :data, :crypt
+
   KEY = ENV['KEY_SECRET']
 
   def initialize(data)

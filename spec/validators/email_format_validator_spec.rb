@@ -24,4 +24,3 @@ RSpec.describe EmailFormatValidator do
     expect(subject).not_to be_valid
   end
 end
-

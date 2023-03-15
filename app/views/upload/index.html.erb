@@ -1,2 +1,23 @@
-<h1>Upload#index</h1>
-<p>Find me in app/views/upload/index.html.erb</p>
+<h1>Importer Files</h1>
+
+<table class='table table-bordered'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>File name</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @contact_importer_files.each do |contact_importer_file| %>
+            <tr>
+                <td><%= contact_importer_file.id %></td>
+                <td><%= contact_importer_file.file_name %></td>
+                <td><%= contact_importer_file.status %></td>
+                <td><%= contact_importer_file.created_at %></td>
+                <td><%= link_to 'View log', upload_show_path(contact_importer_file) %></td>
+            </tr>    
+        <% end %>
+    </tbody>
+</table>

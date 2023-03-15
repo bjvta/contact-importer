@@ -3,7 +3,13 @@
 require 'csv'
 
 class UploadController < ApplicationController
-  def index; end
+  def index
+    @contact_importer_files = current_user.contact_importer_files
+  end
+
+  def show
+    @contact_importer_file = current_user.contact_importer_files.find(params[:id])
+  end
 
   def new
     @contact_importer_file = ContactImporterFile.new

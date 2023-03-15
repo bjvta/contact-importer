@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,68 +12,67 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_13_225345) do
-
+ActiveRecord::Schema.define(version: 20_230_313_225_345) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "contact_importer_files", force: :cascade do |t|
-    t.string "file_name"
-    t.integer "status", default: 0
-    t.text "log"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "user_id", null: false
-    t.index ["user_id"], name: "index_contact_importer_files_on_user_id"
+  create_table 'contact_importer_files', force: :cascade do |t|
+    t.string 'file_name'
+    t.integer 'status', default: 0
+    t.text 'log'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'user_id', null: false
+    t.index ['user_id'], name: 'index_contact_importer_files_on_user_id'
   end
 
-  create_table "contacts", force: :cascade do |t|
-    t.string "name"
-    t.string "birthday"
-    t.string "phone"
-    t.string "address"
-    t.string "credit_card_number"
-    t.string "credit_card_network"
-    t.string "credit_card_last_for_digit"
-    t.string "email"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_contacts_on_user_id"
+  create_table 'contacts', force: :cascade do |t|
+    t.string 'name'
+    t.string 'birthday'
+    t.string 'phone'
+    t.string 'address'
+    t.string 'credit_card_number'
+    t.string 'credit_card_network'
+    t.string 'credit_card_last_for_digit'
+    t.string 'email'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['user_id'], name: 'index_contacts_on_user_id'
   end
 
-  create_table "row_attributes", force: :cascade do |t|
-    t.string "attr_type"
-    t.string "val"
-    t.bigint "row_importer_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["row_importer_id"], name: "index_row_attributes_on_row_importer_id"
+  create_table 'row_attributes', force: :cascade do |t|
+    t.string 'attr_type'
+    t.string 'val'
+    t.bigint 'row_importer_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['row_importer_id'], name: 'index_row_attributes_on_row_importer_id'
   end
 
-  create_table "row_importers", force: :cascade do |t|
-    t.bigint "contact_importer_file_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["contact_importer_file_id"], name: "index_row_importers_on_contact_importer_file_id"
+  create_table 'row_importers', force: :cascade do |t|
+    t.bigint 'contact_importer_file_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['contact_importer_file_id'], name: 'index_row_importers_on_contact_importer_file_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "username"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["username"], name: "index_users_on_username", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'email', default: '', null: false
+    t.string 'encrypted_password', default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'username'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+    t.index ['username'], name: 'index_users_on_username', unique: true
   end
 
-  add_foreign_key "contact_importer_files", "users"
-  add_foreign_key "contacts", "users"
-  add_foreign_key "row_attributes", "row_importers"
-  add_foreign_key "row_importers", "contact_importer_files"
+  add_foreign_key 'contact_importer_files', 'users'
+  add_foreign_key 'contacts', 'users'
+  add_foreign_key 'row_attributes', 'row_importers'
+  add_foreign_key 'row_importers', 'contact_importer_files'
 end
