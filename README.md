@@ -29,3 +29,7 @@ node version
 
 - Install yarn
 
+
+```
+SecureRandom.hex(32)
+```
