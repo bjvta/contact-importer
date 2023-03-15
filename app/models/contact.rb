@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Contact < ApplicationRecord
+  paginates_per 10
   belongs_to :user
 
   validates :name, presence: true, name_format: true

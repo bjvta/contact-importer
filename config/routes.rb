@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'profile/edit', to: 'profile#edit'
   patch 'profile/update', to: 'profile#update'
   get 'profile/show', to: 'profile#show'
+  resources :contacts, only: [:index]
 end
