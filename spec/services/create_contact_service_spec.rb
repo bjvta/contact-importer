@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CreateContactService do
-  describe '.call' do
+  describe '#call' do
     let!(:logged_user) { create(:user) }
     context 'valid data' do
       it 'given a right hash with attributes, should return a string with data saved' do
