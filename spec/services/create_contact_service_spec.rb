@@ -18,6 +18,13 @@ RSpec.describe CreateContactService do
       end
     end
     context 'invalid data' do
+      it 'given nothing, should return a string with errors' do
+        hash_data = {
+        }
+        result = described_class.new(hash_data, logged_user).call
+        expect(result).not_to eq('Contact has been saved.')
+      end
+
       it 'given a bad hash, should return a string with errors' do
         hash_data = {
           name: 'Brandon-Valle',

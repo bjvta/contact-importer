@@ -15,7 +15,7 @@ class CreateContactService
     if contact.save
       "Contact has been saved. Name: #{contact.name}, Email: #{contact.email}"
     else
-      "Contact could not be saved. " + contact.errors.full_messages.join(' ')
+      "Contact could not be saved. " + contact.errors.full_messages.join('\n')
     end
   end
 
@@ -25,9 +25,11 @@ class CreateContactService
 
   def build_contact
     credit_card_number = contact_hash[:credit_card_number]
-    contact_hash[:credit_card_last_for_digit] = contact_hash[:credit_card_number].last(4)
-    contact_hash[:credit_card_number] = CreditCardService.new(credit_card_number)
-    contact_hash[:credit_card_network] = GetCardNetworkService.call(credit_card_number)
+    if contact_hash[:credit_card_number].present?
+      contact_hash[:credit_card_last_for_digit] = contact_hash[:credit_card_number].last(4)
+      contact_hash[:credit_card_number] = CreditCardService.new(credit_card_number)
+      contact_hash[:credit_card_network] = GetCardNetworkService.call(credit_card_number)
+    end
     contact_hash[:user] = logged_user
     @contact = Contact.new(contact_hash)
   end

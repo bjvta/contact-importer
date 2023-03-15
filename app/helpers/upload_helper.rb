@@ -2,7 +2,7 @@
 
 module UploadHelper
   def attribute_type_selector
-    [['Name', 'name'], ['Date of Birth', 'birth'], ['Phone', 'phone'], ['Address', 'address'],
-     ['Credit Card Number', 'card_number'], ['Email', 'email']]
+    [['Name', 'name'], ['Date of Birth', 'birthday'], ['Phone', 'phone'], ['Address', 'address'],
+     ['Credit Card Number', 'credit_card_number'], ['Email', 'email']]
   end
 end

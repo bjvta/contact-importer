@@ -81,6 +81,10 @@ GEM
     cocoon (1.2.15)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.3)
     devise (4.9.0)
       bcrypt (~> 3.0)
@@ -291,6 +295,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   cocoon
+  database_cleaner-active_record
   devise
   dotenv-rails
   factory_bot_rails

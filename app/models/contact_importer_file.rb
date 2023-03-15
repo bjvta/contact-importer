@@ -5,4 +5,5 @@ class ContactImporterFile < ApplicationRecord
   accepts_nested_attributes_for :row_importers, reject_if: :all_blank, allow_destroy: true
 
   validates :file_name, presence: true
+  belongs_to :user
 end
