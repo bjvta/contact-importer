@@ -1,9 +1,9 @@
 <tr class="nested-fields">
   <td>
-    <%= f.select :attr_type, attribute_type_selector, :prompt => 'Select One' %>
+    <%= f.select :attr_type, attribute_type_selector,  { :include_blank => '-- Select One --' }, :required => true %>
   </td>
   <td>
     <%= f.text_field :val %>
   </td>
 </tr>
-  <%#= link_to_remove_association "remove row attribute", f %>
+

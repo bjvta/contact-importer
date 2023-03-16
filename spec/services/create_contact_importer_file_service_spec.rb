@@ -26,6 +26,7 @@ RSpec.describe CreateContactImporterFileService do
 
       expect do
         result = described_class.call(contact_importer_file)
+        expect(result.contacts.size).to eq(1)
       end.to change { Contact.count }.by(1)
     end
 
@@ -81,7 +82,7 @@ RSpec.describe CreateContactImporterFileService do
     it 'given an existing email on the contact list' do
       logged_user = create(:user)
       contact = create(:contact, user: logged_user, email: row_attribute_email.val)
-      contact_importer_file = build(:contact_importer_file, user: logged_user)
+      contact_importer_file = create(:contact_importer_file, user: logged_user)
       row_importer.row_attributes.append(row_attribute_name)
       row_importer.row_attributes.append(row_attribute_birthday)
       row_importer.row_attributes.append(row_attribute_phone)

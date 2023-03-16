@@ -22,9 +22,10 @@ unless User.any?
                                credit_card_network: 'MasterCard',
                                credit_card_last_for_digit: '1234',
                                email: 'pedro@gmail.com',
-                               user: user_one)
+                               user: user_one,
+                               contact_importer_file: contact_importer_file)
 
-  ContactImporterFile.create(user: user_two, file_name: 'test1.csv', log: 'Created in the setting up.')
+  cif = ContactImporterFile.create(user: user_two, file_name: 'test1.csv', log: 'Created in the setting up.')
   100.times do
     contact = Contact.create(
       name: Faker::Name.name,
@@ -35,7 +36,8 @@ unless User.any?
       credit_card_last_for_digit: Faker::Finance.credit_card.last(4),
       credit_card_network: ['American Express', 'Diners Club', 'Discover', 'JCB', 'MasterCard', 'Visa'].sample,
       email: Faker::Internet.email,
-      user: user_two
+      user: user_two,
+      contact_importer_file: cif
     )
     contact
   end

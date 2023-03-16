@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_230_313_225_345) do
+ActiveRecord::Schema.define(version: 20_230_316_021_247) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 20_230_313_225_345) do
     t.bigint 'user_id', null: false
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'contact_importer_file_id', null: false
+    t.index ['contact_importer_file_id'], name: 'index_contacts_on_contact_importer_file_id'
     t.index ['user_id'], name: 'index_contacts_on_user_id'
   end
 
@@ -72,6 +74,7 @@ ActiveRecord::Schema.define(version: 20_230_313_225_345) do
   end
 
   add_foreign_key 'contact_importer_files', 'users'
+  add_foreign_key 'contacts', 'contact_importer_files'
   add_foreign_key 'contacts', 'users'
   add_foreign_key 'row_attributes', 'row_importers'
   add_foreign_key 'row_importers', 'contact_importer_files'

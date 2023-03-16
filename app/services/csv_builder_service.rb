@@ -20,6 +20,7 @@ module CsvBuilderService
       contact_importer_file.row_importers.append(row_importer)
     end
     contact_importer_file.file_name = File.basename(file_path)
+    contact_importer_file.save
     contact_importer_file
   end
 end

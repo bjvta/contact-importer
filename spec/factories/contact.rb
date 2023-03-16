@@ -11,5 +11,6 @@ FactoryBot.define do
     credit_card_last_for_digit { '1234' }
     email { Faker::Internet.email }
     user
+    contact_importer_file
   end
 end

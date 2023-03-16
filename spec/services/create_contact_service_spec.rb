@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe CreateContactService do
   describe '#call' do
     let!(:logged_user) { create(:user) }
+    let!(:contact_importer_file) { create(:contact_importer_file) }
     context 'valid data' do
       it 'given a right hash with attributes, should return a string with data saved' do
         hash_data = {
@@ -13,7 +14,8 @@ RSpec.describe CreateContactService do
           phone: '(+57) 320 432 05 09',
           address: 'This is the address',
           credit_card_number: '6011111111111117',
-          email: 'bjvtamayo78@gmail.com'
+          email: 'bjvtamayo78@gmail.com',
+          contact_importer_file: contact_importer_file
         }
         result = described_class.new(hash_data, logged_user).call
         expect(result).to eq('Contact has been saved. Name: Brandon Valle, Email: bjvtamayo78@gmail.com')
@@ -33,7 +35,8 @@ RSpec.describe CreateContactService do
           phone: '(+57) 320 432 05 09',
           address: 'This is the address',
           credit_card_number: '6011111111111117',
-          email: 'bjvtamayo78@gmail.com'
+          email: 'bjvtamayo78@gmail.com',
+          contact_importer_file: contact_importer_file
         }
         result = described_class.new(hash_data, logged_user).call
         expect(result).to eq('Contact could not be saved. Name has an invalid format')

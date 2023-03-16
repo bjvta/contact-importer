@@ -8,8 +8,12 @@ Note. each row is indexed, you will see in the left side and the attribute type 
 </p>
 
 <% if params[:file].present? %>
-  <%= form_for @contact_importer_file, url: root_path do |f| %>
+  <%= form_for @contact_importer_file, url: upload_save_path do |f| %>
     <h3>Contact Importer File</h3>
+    <div class='d-none'>
+      <%= f.hidden_field :id %>
+    </div>
+
     <div id="row_importers">
       <table class="table table-hover table-bordered">
         <tbody>
