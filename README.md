@@ -10,7 +10,7 @@ Node version: v16.14.2
 
 ## Installing Ruby for Mac
 
-For more information to install the project in Ubuntu or Windows, you can go to (https://gorails.com/)[https://gorails.com/setup/macos/13-ventura]
+For more information to install the project in Ubuntu or Windows, you can go to [gorails.com](https://gorails.com/setup/macos/13-ventura)
 
 ```
     cd
@@ -88,7 +88,16 @@ rails s
 bundle exec rails s
 ```
 
-You can use an example file [example_file](example_file.csv)
+Dummy users:
+```
+email: user_one@yopmail.com  
+password: adminadmin
+
+email: user_two@yopmail.com
+password: qwertyqwerty
+```
+
+You can use an example file [example_file](example_file.csv), but for more examples, they are in (tests_files)[spec/fixtures/files]
 
 ## Testing
 
